@@ -32,7 +32,7 @@
                                        <image>
                                           <Image url="@../../../../OneDrive/Pictures/HealthBot2.png" />
                                        </image></ImageView>
-                                    <TextArea fx:id="botText" prefHeight="312.0" prefWidth="200.0" wrapText="true" />
+                                    <TextArea fx:id="botText" prefHeight="312.0" prefWidth="200.0" text="Please input your height" wrapText="true" />
                                     <Button fx:id="advice" mnemonicParsing="false" onAction="#getAdvice" text="Advice" />
                                  </children>
                               </VBox>
@@ -71,6 +71,12 @@
                                           <TextField fx:id="homeWater" alignment="CENTER" text="Current Water" />
                                        </children>
                                     </HBox>
+                                    <VBox alignment="BOTTOM_CENTER">
+                                       <children>
+                                          <Button fx:id="setHeight" mnemonicParsing="false" onAction="#setHeight" text="Set Height" />
+                                          <TextField fx:id="heightBox" alignment="BOTTOM_CENTER" promptText="Height in inches" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </VBox>
                            </center>
@@ -222,7 +228,7 @@
                                     <CategoryAxis label="Day" />
                                  </xAxis>
                                  <yAxis>
-                                    <NumberAxis label="Quarts" side="LEFT" upperBound="20.0" />
+                                    <NumberAxis label="Pints" side="LEFT" upperBound="20.0" />
                                  </yAxis>
                               </LineChart>
                            </center>

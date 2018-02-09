@@ -12,7 +12,7 @@ public class GeneralStats {
 	public GeneralStats() {
 		day = 1;
 		stats = new ArrayList<StatTracker>();
-		height = 250;
+		height = 0;
 	}
 
 	public int getDay() {

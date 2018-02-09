@@ -140,6 +140,10 @@ public class Controller {
 	private Button gwaterSet;
 	@FXML
 	private Button advice;
+	@FXML
+	private Button setHeight;
+	@FXML
+	private TextField heightBox;
 
 	StatTracker weight;
 	StatTracker bmi;
@@ -182,9 +186,11 @@ public class Controller {
 	}
 	@FXML
 	public void nextDay() {
-		allStats.nextDay();
-		dayNum.setText("Day: " + allStats.getDay());
-		botText.setText(bill.getGenericAdvice());
+		if (bmi.getAmount() > 0) {
+			allStats.nextDay();
+			dayNum.setText("Day: " + allStats.getDay());
+			botText.setText(bill.getGenericAdvice());
+		}
 	}
 	@FXML
 	public void getAdvice() {
@@ -197,7 +203,7 @@ public class Controller {
 	}
 	@FXML
 	private void setBMI() {
-		if (weight.getAmount() > 0) {
+		if (weight.getAmount() > 0 && allStats.getHeight() > 0) {
 			double temp = (weight.getAmount() * 703 / Math.pow(allStats.getHeight(), 2));
 			bmi.getMainField().setText(bmi.getName() + ": " + temp);
 			bmi.setAmount(temp);
@@ -250,6 +256,14 @@ public class Controller {
 	@FXML
 	public void setgWater() {
 		promptText("Water", goalWater);
+	}
+	@FXML
+	public void setHeight() {
+		if (checkIn(heightBox.getText())) {
+			allStats.setHeight(Double.parseDouble(heightBox.getText()));
+			setBMI();
+			promptText("Height", heightBox);
+		}
 	}
 	private boolean checkIn(String input) {
 		boolean temp = false;
