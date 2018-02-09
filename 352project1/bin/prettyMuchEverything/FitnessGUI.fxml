@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prettyMuchEverything.Controller">
+   <center>
+      <TabPane fx:id="overview" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="homeTab" text="Home">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <top>
+                              <HBox prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="endDay" mnemonicParsing="false" onAction="#nextDay" text="End Day" />
+                                    <TextField fx:id="dayNum" text="Day: #" />
+                                 </children>
+                              </HBox>
+                           </top>
+                           <right>
+                              <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ImageView fx:id="healthBot" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../OneDrive/Pictures/HealthBot2.png" />
+                                       </image></ImageView>
+                                    <TextArea fx:id="botText" prefHeight="312.0" prefWidth="200.0" wrapText="true" />
+                                    <Button fx:id="advice" mnemonicParsing="false" onAction="#getAdvice" text="Advice" />
+                                 </children>
+                              </VBox>
+                           </right>
+                           <center>
+                              <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="BOTTOM_RIGHT">
+                                 <children>
+                                    <TextField fx:id="homeProgress" alignment="CENTER" text="Current Progress:" />
+                                    <HBox alignment="TOP_CENTER">
+                                       <children>
+                                          <TextField fx:id="homeWeight" alignment="CENTER" text="Current Weight" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="TOP_CENTER">
+                                       <children>
+                                          <TextField fx:id="homeBMI" alignment="CENTER" text="Current BMI" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="TOP_CENTER">
+                                       <children>
+                                          <TextField fx:id="homeSleep" alignment="CENTER" text="Current Sleep" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="TOP_CENTER">
+                                       <children>
+                                          <TextField fx:id="homeExcercise" alignment="CENTER" text="Current Excercise" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="TOP_CENTER">
+                                       <children>
+                                          <TextField fx:id="homeDiet" alignment="CENTER" text="Current Diet" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="TOP_CENTER">
+                                       <children>
+                                          <TextField fx:id="homeWater" alignment="CENTER" text="Current Water" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="weightTab" text="Weight">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <center>
+                              <LineChart fx:id="weightChart" BorderPane.alignment="CENTER">
+                                <xAxis>
+                                  <CategoryAxis label="Day" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis label="Pounds" side="LEFT" upperBound="350.0" />
+                                </yAxis>
+                              </LineChart>
+                           </center>
+                           <top>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="weightSet" mnemonicParsing="false" onAction="#setWeight" text="Set" />
+                                    <TextField fx:id="weightText" />
+                                 </children>
+                              </HBox>
+                           </top>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="bMITab" text="BMI">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <center>
+                              <LineChart fx:id="bMIChart" BorderPane.alignment="CENTER">
+                                 <xAxis>
+                                    <CategoryAxis label="Day" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="BMI" side="LEFT" upperBound="40.0" />
+                                 </yAxis>
+                              </LineChart>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="sleepTab" text="Sleep">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <center>
+                              <LineChart fx:id="sleepChart" BorderPane.alignment="CENTER">
+                                 <xAxis>
+                                    <CategoryAxis label="Day" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="Hours" side="LEFT" upperBound="24.0" />
+                                 </yAxis>
+                              </LineChart>
+                           </center>
+                           <top>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="sleepSet" mnemonicParsing="false" onAction="#setSleep" text="Set" />
+                                    <TextField fx:id="sleepText" />
+                                 </children>
+                              </HBox>
+                           </top>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="excerciseTab" text="Excercise">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <center>
+                              <LineChart fx:id="excerciseChart" BorderPane.alignment="CENTER">
+                                 <xAxis>
+                                    <CategoryAxis label="Day" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="Calories Burned" side="LEFT" upperBound="8000.0" />
+                                 </yAxis>
+                              </LineChart>
+                           </center>
+                           <top>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="excerciseSet" mnemonicParsing="false" onAction="#setExcercise" text="Set" />
+                                    <TextField fx:id="excerciseText" />
+                                 </children>
+                              </HBox>
+                           </top>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="dietTab" text="Diet">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <center>
+                              <LineChart fx:id="dietChart" BorderPane.alignment="CENTER">
+                                 <xAxis>
+                                    <CategoryAxis label="Day" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="Calories In" side="LEFT" upperBound="8000.0" />
+                                 </yAxis>
+                              </LineChart>
+                           </center>
+                           <top>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="dietSet" mnemonicParsing="false" onAction="#setDiet" text="Set" />
+                                    <TextField fx:id="dietText" />
+                                 </children>
+                              </HBox>
+                           </top>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="waterTab" text="Water">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <center>
+                              <LineChart fx:id="waterChart" BorderPane.alignment="CENTER">
+                                 <xAxis>
+                                    <CategoryAxis label="Day" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="Quarts" side="LEFT" upperBound="20.0" />
+                                 </yAxis>
+                              </LineChart>
+                           </center>
+                           <top>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="waterSet" mnemonicParsing="false" onAction="#setWater" text="Set" />
+                                    <TextField fx:id="waterText" />
+                                 </children>
+                              </HBox>
+                           </top>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="goalsTab" text="Goals">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane prefHeight="500.0" prefWidth="546.0">
+                           <center>
+                              <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="70.0" prefWidth="546.0">
+                                       <children>
+                                          <TextField fx:id="goalWeight" promptText="Weight Goal #" />
+                                          <Button fx:id="gwSet" mnemonicParsing="false" onAction="#setgWeight" text="Set" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="70.0" prefWidth="546.0">
+                                       <children>
+                                          <TextField fx:id="goalBMI" promptText="BMI Goal #" />
+                                          <Button fx:id="gBMISet" mnemonicParsing="false" onAction="#setgBMI" text="Set" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="70.0">
+                                       <children>
+                                          <TextField fx:id="goalSleep" promptText="Sleep Goal #" />
+                                          <Button fx:id="gsSet" mnemonicParsing="false" onAction="#setgSleep" text="Set" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="70.0">
+                                       <children>
+                                          <TextField fx:id="goalExcercise" promptText="Excersise Goal #" />
+                                          <Button fx:id="geSet" mnemonicParsing="false" onAction="#setgExcercise" text="Set" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="70.0">
+                                       <children>
+                                          <TextField fx:id="goalDiet" promptText="Diet Goal #" />
+                                          <Button fx:id="gdSet" mnemonicParsing="false" onAction="#setgDiet" text="Set" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="70.0">
+                                       <children>
+                                          <TextField fx:id="goalWater" promptText="Water Goal #" />
+                                          <Button fx:id="gwaterSet" mnemonicParsing="false" onAction="#setgWater" text="Set" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
